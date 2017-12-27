@@ -10,4 +10,5 @@ require 'dcha/version'
 module Dcha
   autoload :Config, 'dcha/config'
   autoload :MPT, 'dcha/mpt'
+  autoload :UI, 'dcha/ui'
 end

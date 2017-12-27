@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require 'dcha'
+
+Dcha::UI.new.show
