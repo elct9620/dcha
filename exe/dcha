@@ -2,4 +2,7 @@
 
 require 'dcha'
 
-Dcha::UI.new.show
+peer = Dcha::Peer.new
+peer.join
+
+Dcha::UI.instance.show

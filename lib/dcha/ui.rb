@@ -2,6 +2,8 @@ module Dcha
   # TODO: Implement `curses` ui
   # :nodoc:
   class UI
+    include Singleton
+
     def initialize
       @input = ''
     end
