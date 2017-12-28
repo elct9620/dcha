@@ -3,15 +3,13 @@ module Dcha
     # :nodoc:
     module CanHeartbeat
       def ping
-        transmit action: :pong, params: []
+        transmit action: :pong, params: [ipaddr.ip_address]
       end
 
-      def pong
-        transmit action: :add_peer, params: [ipaddr.ip_address]
-      end
-
-      def add_peer(address)
+      def pong(address)
         @peers.push(address).uniq!
+        return if ipaddr.ip_address == address
+        transmit_to address, action: :pong, params: [ipaddr.ip_address]
       end
     end
   end

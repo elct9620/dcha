@@ -2,7 +2,9 @@
 
 require 'dcha'
 
+Thread.abort_on_exception = true
+
 peer = Dcha::Peer.new
 peer.join
 
-Dcha::UI.instance.show
+Dcha::UI.new(peer).show

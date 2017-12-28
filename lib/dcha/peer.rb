@@ -1,17 +1,19 @@
 require 'dcha/peer/remote_executable'
 require 'dcha/peer/can_heartbeat'
+require 'dcha/peer/has_trie'
 
 module Dcha
   # :nodoc:
   class Peer
     include RemoteExecutable
+    include HasTrie
     include CanHeartbeat
 
     MULTICAST_ADDR = '224.5.5.55'.freeze
     BIND_ADDR = '0.0.0.0'.freeze
     PORT = '5555'.freeze
 
-    attr_reader :hostname, :ipaddr
+    attr_reader :peers, :hostname, :ipaddr
 
     def initialize
       @hostname = Socket.gethostname
@@ -58,7 +60,7 @@ module Dcha
     end
 
     def resolve(event)
-      execute event[:action], event[:on], *event[:params]
+      execute event[:action], event[:on], event[:params]
     end
 
     def receive
