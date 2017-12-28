@@ -13,4 +13,6 @@ module Dcha
   autoload :MPT, 'dcha/mpt'
   autoload :UI, 'dcha/ui'
   autoload :Peer, 'dcha/peer'
+  autoload :Chunk, 'dcha/chunk'
+  autoload :PacketManager, 'dcha/packet_manager'
 end
