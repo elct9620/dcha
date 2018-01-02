@@ -5,6 +5,7 @@ require 'dcha/peer/has_trie'
 module Dcha
   # :nodoc:
   class Peer
+    include Observable
     include RemoteExecutable
     include HasTrie
     include CanHeartbeat
@@ -61,6 +62,8 @@ module Dcha
 
     def resolve(event)
       execute event[:action], event[:on], event[:params]
+      changed
+      notify_observers event[:action], event[:on], event[:params], Time.now
     end
 
     def receive
