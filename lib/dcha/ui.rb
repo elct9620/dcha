@@ -46,7 +46,7 @@ module Dcha
       offset = message.size + 2
       @window.setpos(@window.maxy - 2, offset)
       @window.heading = message
-      @window.peers = @peer.peers
+      @window.peers = [@peer.peers * 100].flatten
     end
   end
 end

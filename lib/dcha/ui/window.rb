@@ -23,10 +23,13 @@ module Dcha
         @input.addstr(head)
       end
 
+      # TODO: Cut off string if overflow
       def peers=(peers)
+        peers = peers.take(maxy - 5)
+        peers.push('And more ...') if peers.size == maxy - 5
         peers.each.with_index do |peer, index|
-          @sidebar.setpos(index + 1, 1)
-          @sidebar.addstr("#{index + 1}. #{peer}")
+          @sidebar.setpos(index + 1, 2)
+          @sidebar.addstr(peer)
         end
       end
 
