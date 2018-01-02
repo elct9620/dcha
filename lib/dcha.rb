@@ -4,6 +4,7 @@ require 'digest'
 require 'socket'
 require 'ipaddr'
 require 'singleton'
+require 'curses'
 
 require 'dcha/version'
 
