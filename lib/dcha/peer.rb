@@ -63,6 +63,7 @@ module Dcha
     end
 
     def resolve(event)
+      raise StandardError, event if event == 'store_set'
       execute event[:action], event[:on], event[:params]
       changed
       notify_observers event[:action], event[:on], event[:params], Time.now

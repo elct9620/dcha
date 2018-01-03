@@ -52,11 +52,16 @@ module Dcha
       @logs.push "CHAIN BLOCKS: #{@peer.chain.blocks.size}"
     end
 
+    def root
+      @logs.push "TRIE ROOT: #{@peer.trie.root_hash}"
+    end
+
     def parse
       return if @input.empty?
       return read if @input.start_with?('GET')
       return write if @input.start_with?('SET')
       return chain if @input.start_with?('CHAIN')
+      return root if @input.start_with?('ROOT')
     end
 
     def show_peers

@@ -6,6 +6,7 @@ require 'ipaddr'
 require 'singleton'
 require 'curses'
 require 'observer'
+require 'pathname'
 
 require 'dcha/version'
 
@@ -19,4 +20,5 @@ module Dcha
   autoload :PacketManager, 'dcha/packet_manager'
   autoload :Block, 'dcha/block'
   autoload :Chain, 'dcha/chain'
+  autoload :Store, 'dcha/store'
 end

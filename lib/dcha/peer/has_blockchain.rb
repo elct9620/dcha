@@ -36,6 +36,7 @@ module Dcha
       def add_block(blocks)
         return unless blocks.last.valid_proof?
         chain.add_block(blocks.last)
+        reset(blocks.last.root_hash)
         transmit action: :mine, params: [blocks.last(1)]
       end
 
