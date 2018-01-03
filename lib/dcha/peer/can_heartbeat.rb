@@ -7,10 +7,12 @@ module Dcha
       end
 
       def pong(address)
-        @peers.push(address).uniq!
         transmit action: :mine, params: [chain.blocks]
-        return if ipaddr.ip_address == address
-        transmit_to address, action: :pong, params: [ipaddr.ip_address]
+        transmit_to address, action: :add_peer, params: [ipaddr.ip_address]
+      end
+
+      def add_peer(address)
+        @peers.push(address).uniq!
       end
     end
   end
