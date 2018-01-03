@@ -6,8 +6,8 @@ module Dcha
         @chain ||= Chain.new
       end
 
-      def blocks(address)
-        transmit_to address, action: :mine, params: [chain.blocks]
+      def blocks(_address)
+        transmit action: :mine, params: [chain.blocks]
       end
 
       def mine(blocks)
@@ -47,6 +47,7 @@ module Dcha
       def replace_blocks(blocks)
         blocks.shift if blocks.first.index.zero?
         chain.replace_with(blocks)
+        reset(blocks.last.root_hash)
         transmit action: :mine, params: [blocks.last(1)]
       end
 
