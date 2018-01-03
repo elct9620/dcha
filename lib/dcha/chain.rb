@@ -38,7 +38,7 @@ module Dcha
       valid = true
       blocks.each.with_index(0) do |block, idx|
         valid &&= if idx.zero?
-                    Oj.dump(block) == Oj.dump(Block::GENSIS)
+                    Oj.dump(block) == Oj.dump(Block::GENESIS)
                   else
                     block.valid_after?(blocks[idx - 1])
                   end

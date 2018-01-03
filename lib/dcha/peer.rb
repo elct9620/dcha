@@ -1,6 +1,7 @@
 require 'dcha/peer/remote_executable'
 require 'dcha/peer/can_heartbeat'
 require 'dcha/peer/has_trie'
+require 'dcha/peer/has_blockchain'
 
 module Dcha
   # :nodoc:
@@ -8,6 +9,7 @@ module Dcha
     include Observable
     include RemoteExecutable
     include HasTrie
+    include HasBlockchain
     include CanHeartbeat
 
     MULTICAST_ADDR = '224.5.5.55'.freeze

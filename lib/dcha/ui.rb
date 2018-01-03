@@ -23,8 +23,8 @@ module Dcha
       @window.close
     end
 
-    def update(action, _, params, time)
-      @logs.push("Execute #{action} with #{params} at #{time}")
+    def update(action, _, _params, time)
+      @logs.push("Execute #{action} at #{time}")
       refresh
     end
 
@@ -44,13 +44,19 @@ module Dcha
 
     def write
       _, key, value = @input.split(' ')
-      @peer.transmit action: :write, params: [key, value]
+      @peer.write(key, value)
+      @peer.create_block(@peer.trie.root_hash)
+    end
+
+    def chain
+      @logs.push "CHAIN BLOCKS: #{@peer.chain.blocks.size}"
     end
 
     def parse
       return if @input.empty?
       return read if @input.start_with?('GET')
       return write if @input.start_with?('SET')
+      return chain if @input.start_with?('CHAIN')
     end
 
     def show_peers
