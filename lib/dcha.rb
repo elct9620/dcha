@@ -17,4 +17,5 @@ module Dcha
   autoload :Peer, 'dcha/peer'
   autoload :Chunk, 'dcha/chunk'
   autoload :PacketManager, 'dcha/packet_manager'
+  autoload :Block, 'dcha/block'
 end
