@@ -7,9 +7,9 @@ module Dcha
       end
 
       def pong(address)
-        @peers.push(address).uniq!
-        transmit action: :mine, params: [chain.blocks]
         return if @peers.include?(address)
+        transmit action: :mine, params: [chain.blocks]
+        @peers.push(address).uniq!
         transmit_to address, action: :pong, params: [ipaddr.ip_address]
       end
     end
