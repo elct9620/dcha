@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    dcha (0.1.1)
+    dcha (0.1.2)
       curses
       oj
       rlp
